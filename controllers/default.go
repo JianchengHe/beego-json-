@@ -49,7 +49,7 @@ func (c *MainController) Get() {
 
 
 //该post方法是处理post类型的请求的时候
-func (c *MainController) Post(){
+//func (c *MainController) Post(){
 	/*fmt.Println("post类型的请求")
 	user := c.Ctx.Request.FormValue("user")
 	fmt.Println("用户名为：",user)
@@ -80,7 +80,7 @@ func (c *MainController) Post(){
 
 	//解析数据
 	//body := c.Ctx.Request.Body
-	dataByes,err := ioutil.ReadAll(c.Ctx.Request.Body)
+	/*dataByes,err := ioutil.ReadAll(c.Ctx.Request.Body)
 	if err != nil {
 		c.Ctx.WriteString("数据接收失败，请重试")
 		return
@@ -94,4 +94,20 @@ func (c *MainController) Post(){
 	}
 	fmt.Println("用户名：",person.Name,"年龄",person.Age)
 	c.Ctx.WriteString("用户名是："+person.Name)
+}*/
+
+func (c *MainController) Post() {
+	dataBytes,err := ioutil.ReadAll(c.Ctx.Request.Body)
+	if err != nil{
+		c.Ctx.WriteString("数据接收失败，请重试")
+		return
+	}
+	//json包解析
+	 var person2 models.Person2
+	err = json.Unmarshal(dataBytes,&person2)
+	if err != nil {
+		c.Ctx.WriteString("数据接收失败，请重试")
+		return
+	}
+	fmt.Println("姓名：",person2.Name,"生日：",person2.Birthday,"地址：",person2.Address,"昵称：",person2.Nick)
 }

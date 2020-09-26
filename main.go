@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/astaxie/beego"
+	_"github.com/go-sql-driver/mysql"
 )
 
 func main() {
@@ -25,7 +26,11 @@ func main() {
 	dbPassword := config.String("db_password")
 	dbIp := config.String("db_ip")
 	dbName := config.String("db_name")
-	sql.Open(driver,dbUser+":"+dbPassword+"@tcp("+dbIp+"/"+dbName)
+	db,err := sql.Open(driver,dbUser+":"+dbPassword+"@tcp("+dbIp+")/"+dbName+"?charset = utf8")
+	if err != nil {
+		panic("数据库连接打开失败，请重试")
+	}
+	fmt.Println(db)
 	beego.Run()
 }
 

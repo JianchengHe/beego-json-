@@ -1,11 +1,8 @@
 package controllers
 
 import (
-	"beego190604/models"
-	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
-	"io/ioutil"
 )
 
 type MainController struct {
@@ -96,7 +93,7 @@ func (c *MainController) Get() {
 	c.Ctx.WriteString("用户名是："+person.Name)
 }*/
 
-func (c *MainController) Post() {
+/*func (c *MainController) Post() {
 	dataBytes,err := ioutil.ReadAll(c.Ctx.Request.Body)
 	if err != nil{
 		c.Ctx.WriteString("数据接收失败，请重试")
@@ -110,4 +107,4 @@ func (c *MainController) Post() {
 		return
 	}
 	fmt.Println("姓名：",person2.Name,"生日：",person2.Birthday,"地址：",person2.Address,"昵称：",person2.Nick)
-}
+}*/

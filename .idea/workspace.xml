@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21cce1b7-f081-4b36-afc1-f56d2e9b922b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/person2.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/registerControllers.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db_mysql/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/app.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/default.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/person2.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,10 +46,15 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="D:/Go语言/GoProjects/src/weather" />
+    <property name="last_opened_file_path" value="D:/Go语言/GoProjects/src/LolHearos" />
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
-  <component name="RunManager" selected="Go Build.go build default.go">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\10190\go\src\beego190604\models" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build registerControllers.go">
     <configuration name="go build beego190604" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="beego190604" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -71,11 +79,21 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build registerControllers.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="beego190604" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/controllers/registerControllers.go" />
+      <package value="beego190604" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Build.go build registerControllers.go" />
         <item itemvalue="Go Build.go build beego190604" />
         <item itemvalue="Go Build.go build default.go" />
-        <item itemvalue="Go Build.go build main.go" />
       </list>
     </recent_temporary>
   </component>
@@ -91,26 +109,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="47" key="#go_build_default.go/0.0.1536.824@0.0.1536.824" timestamp="1601132116018" />
-    <state x="1098" y="181" key="FileChooserDialogImpl" timestamp="1601005053164">
+    <state x="477" y="47" key="#go_build_registerControllers.go" timestamp="1601220151465">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="1098" y="181" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601005053164" />
-    <state width="1493" height="445" key="GridCell.Tab.0.bottom" timestamp="1601132284999">
+    <state x="477" y="47" key="#go_build_registerControllers.go/0.0.1536.824@0.0.1536.824" timestamp="1601220151465" />
+    <state x="1098" y="181" key="FileChooserDialogImpl" timestamp="1601217798814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="445" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601132284999" />
-    <state width="1493" height="445" key="GridCell.Tab.0.center" timestamp="1601132284998">
+    <state x="1098" y="181" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601217798814" />
+    <state width="1493" height="245" key="GridCell.Tab.0.bottom" timestamp="1601220625558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="445" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601132284998" />
-    <state width="1493" height="445" key="GridCell.Tab.0.left" timestamp="1601132284998">
+    <state width="1493" height="245" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601220625558" />
+    <state width="1493" height="245" key="GridCell.Tab.0.center" timestamp="1601220625558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="445" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601132284998" />
-    <state width="1493" height="445" key="GridCell.Tab.0.right" timestamp="1601132284998">
+    <state width="1493" height="245" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601220625558" />
+    <state width="1493" height="245" key="GridCell.Tab.0.left" timestamp="1601220625558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="445" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601132284998" />
+    <state width="1493" height="245" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601220625558" />
+    <state width="1493" height="245" key="GridCell.Tab.0.right" timestamp="1601220625558">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="245" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601220625558" />
     <state x="270" y="55" key="SettingsEditor" timestamp="1600759939576">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

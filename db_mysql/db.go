@@ -30,7 +30,7 @@ func Connect() {
 	dbIp := config.String("db_ip")
 	dbName := config.String("db_name")
 
-	db, err := sql.Open(driver, dbUser+":"+dbPassword+"@tcp("+dbIp+")/"+dbName+"?charset = utf8")
+	db, err := sql.Open(driver, dbUser+":"+dbPassword+"@tcp("+dbIp+")/"+dbName+"?charset=utf8")
 	if err != nil { //err不为nil,表示连接数据库时出现错误，程序就在此中断就不用在执行了。
 		//早发现，早解决
 		//panic:让程序进入一种恐慌状态，程序会终止执行。
@@ -49,8 +49,8 @@ func AddUser(u models.User)(int64,error) {
 	u.Password = hex.EncodeToString(passwordBytes)
 
 	//execute
-	result,err := Db.Exec("insert into user(name1,birthday,address,password)"+"values(?,?,?,?)",
-		u.Name1,u.Birthday,u.Address,u.Password)
+	result,err := Db.Exec("insert into user(name1,birthday,address,password)"+
+	"values(?,?,?,?)", u.Name1,u.Birthday,u.Address,u.Password)
 	if err != nil {
 		return -1,err
 	}

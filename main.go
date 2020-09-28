@@ -4,7 +4,7 @@ import (
 	"beego190604/db_mysql"
 	_ "beego190604/routers"
 	"github.com/astaxie/beego"
-	_"github.com/go-sql-driver/mysql"
+
 )
 
 func main() {

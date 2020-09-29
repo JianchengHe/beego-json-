@@ -53,9 +53,9 @@ func (r *RegisterControllers) Post(){
 			Data:nil,
 		}
 		r.Data["json"] = &result
-		r.ServeJSON()
-		return
-	}
+	r.ServeJSON()
+	return
+}
 	fmt.Println(row)
 	md5Hash := md5.New()
 	md5Hash.Write([]byte(user.Password))

@@ -33,16 +33,18 @@ func (r *RegisterControllers) Post(){
 	var user models.User
 	err = json.Unmarshal(dataBytes,&user)
 	if err != nil {
+		fmt.Println(err.Error())
 		//r.Ctx.WriteString("数据解析错误，请重试。")
 		result := models.Result{
-			Code:0,
-			Message:"数据解析错误，请重试。",
-			Data:nil,
+			Code:    0,
+			Message: "数据解析错误，请重试。",
+			Data:    nil,
 		}
 		r.Data["json"] = &result
 		r.ServeJSON()
 		return
 	}
+
 	//直接调用保存数据的一个函数，并判断保存后的结果
 	row,err := db_mysql.AddUser(user)
 	if err != nil {
@@ -53,17 +55,17 @@ func (r *RegisterControllers) Post(){
 			Data:nil,
 		}
 		r.Data["json"] = &result
-	r.ServeJSON()
-	return
-}
+		r.ServeJSON()
+		return
+	}
 	fmt.Println(row)
 	md5Hash := md5.New()
 	md5Hash.Write([]byte(user.Password))
 	user.Password = hex.EncodeToString(md5Hash.Sum(nil))
 	result := models.Result{
-		Code:1,
-		Message:"恭喜，注册用户信息成功",
-		Data: user,
+		Code:    1,
+		Message: "恭喜，注册用户信息成功",
+		Data:    user,
 	}
 	//json.Marshal(result) 编码
 	r.Data["json"] = &result

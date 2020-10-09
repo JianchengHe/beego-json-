@@ -52,11 +52,41 @@ func AddUser(u models.User)(int64,error) {
 	result,err := Db.Exec("insert into user(name1,birthday,address,password)"+
 	"values(?,?,?,?)", u.Name1,u.Birthday,u.Address,u.Password)
 	if err != nil {
+
 		return -1,err
 	}
 	row,err := result.RowsAffected()
 	if err != nil {
+
 		return -1,err
 	}
 	return row,nil
+}
+
+//根据数据库里的用户名查询用户信息
+func QueryUserName(name string) ([]models.User,error) {
+	rows,err := Db.Query("select * from user where name1 = ?",name)
+	if err != nil {
+		return nil,err
+	}
+	users := make([]models.User,0)
+	for rows.Next() {
+		var user models.User
+		err = rows.Scan(&user.Name1,&user.Password,&user.Address,&user.Birthday)
+		if err!= nil{
+			return nil,err
+		}
+		users = append(users,user)
+	}
+	return users,nil
+}
+
+func QueryUser(name string)(int,error){
+	rows := Db.QueryRow("select count(name1) user_num from user where name1 = ?",name)
+	var user_num int
+	err :=rows.Scan(&user_num)
+	if err != nil {
+		return 0,nil
+	}
+	return user_num,nil
 }
